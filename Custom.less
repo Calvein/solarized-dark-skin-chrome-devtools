@@ -1,0 +1,522 @@
+/**********************************************/
+/*
+/* Solarized Dark Skin by François Robichet - 2012
+/*
+/* Based on Solarized Dark Skin by Mark Osborne:
+/* https://gist.github.com/1245727
+/*
+/* Inspired by Darcy Clarke's blog post:
+/* http://darcyclarke.me/design/skin-your-chrome-inspector/
+/*
+/**********************************************/
+
+
+@base03 : #002b36;
+@base02 : #073642;
+@base01 : #586e75;
+@base00 : #657b83;
+@base0  : #839496;
+@base1  : #93a1a1;
+@base2  : #eee8d5;
+@base3  : #fdf6e3;
+@yellow : #b58900;
+@orange : #cb4b16;
+@red    : #dc322f;
+@magenta: #d33682;
+@violet : #6c71c4;
+@blue   : #268bd2;
+@cyan   : #2aa198;
+@green  : #859900;
+
+
+
+// For "security" purpose (it override the CSS on the page, not only the Chrome DevTools)
+body#-webkit-web-inspector {
+
+#main {
+    background-color: @base03 !important;
+
+    // Style only the elements, ressources, script and console panels
+    .panel {
+        &.network,
+        &.timeline,
+        &.profiles,
+        &.audits,
+        &.extension {
+            background-color: #fff !important;
+        }
+    }
+}
+
+/**********************************************/
+/* Console
+/**********************************************/
+
+/**********************************************/
+/* Messages
+/**********************************************/
+
+#console-messages a:hover,
+#console-messages .console-formatted-function,
+#console-messages .console-formatted-object {
+    color: @base1 !important;
+}
+
+#console-prompt,
+#console-messages a,
+#console-messages .console-message,
+#console-messages .console-group-messages .section .header .title {
+    color: @base0 !important;
+}
+
+#console-messages .console-formatted-null,
+#console-messages .console-formatted-undefined {
+    color: @base00 !important;
+}
+
+#console-messages .auto-complete-text,
+#console-messages .editing .auto-complete-text {
+    color: @base01 !important;
+}
+
+#console-messages .console-message, .console-user-command {
+    border-bottom: 1px solid @base01 !important;
+}
+
+#console-messages .console-user-command > .console-message-text {
+    color: @cyan !important;
+}
+
+#console-messages .console-formatted-number {
+    color: @magenta !important;
+}
+
+#console-messages .console-formatted-string {
+    color: @yellow !important;
+}
+
+#console-messages .console-formatted-regexp {
+    color: @orange !important;
+}
+
+#console-messages .section .properties .name, .event-properties .name {
+    color: @blue !important;
+    opacity: 1 !important;
+}
+
+#console-messages .console-group-messages .section .header::before,
+#console-messages .properties-tree li.parent::before {
+    content: url(chrome-devtools://devtools/Images/treeRightTriangleWhite.png) !important;
+}
+
+#console-messages .console-group-messages .section.expanded .header::before,
+#console-messages .properties-tree li.parent.expanded::before {
+    content: url(chrome-devtools://devtools/Images/treeDownTriangleWhite.png) !important;
+}
+
+#console-messages .console-error-level .console-message-text .title {
+    color: @red !important;
+}
+
+#console-messages .console-user-command::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTMzNzdGNUZDMTA1MTFFMDgwRUZGQ0JCMjgzMzU0MTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTMzNzdGNjBDMTA1MTFFMDgwRUZGQ0JCMjgzMzU0MTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MzM3N0Y1REMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MzM3N0Y1RUMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pia6udAAAAB5SURBVHjaYvz//z8DMYAFxli9ejWI6oByK5AVhYaGIhRCgQsQGwOxIFTxe5gEE5pCVyA+C8RpQLwbqgmrwvdQxauhis6AbMamEASUkEwCabyHTWE51BQlqBNMoDSKQhckX3dCFd3DCB4g2AP16VkoGwUwEhvgAAEGAAzQHBRSxqPRAAAAAElFTkSuQmCC) !important;
+}
+
+#console-messages .outline-disclosure li.parent::before,
+.section .header::before,
+.properties-tree li.parent::before {
+    content: url(chrome-devtools://devtools/Images/treeRightTriangleWhite.png) !important;
+}
+.section.expanded .header::before,
+.properties-tree li.parent.expanded::before {
+    content: url(chrome-devtools://devtools/Images/treeDownTriangleWhite.png) !important;
+}
+
+/**********************************************/
+/* Drawer aka "escape console"
+/**********************************************/
+
+#drawer {
+    background-color: @base3 !important;
+
+    #console-messages a:hover,
+    #console-messages .console-formatted-function,
+    #console-messages .console-formatted-object {
+        color: @base01 !important;
+    }
+
+    #console-prompt,
+    #console-messages a,
+    #console-messages .console-message,
+    #console-messages .console-group-messages .section .header .title {
+        color: @base00 !important;
+    }
+
+    #console-messages .console-formatted-null,
+    #console-messages .console-formatted-undefined {
+        color: @base0 !important;
+    }
+
+    #console-messages .auto-complete-text,
+    #console-messages .editing .auto-complete-text {
+        color: @base1 !important;
+    }
+
+    #console-messages .console-message, .console-user-command {
+        border-bottom: 1px solid @base01 !important;
+    }
+
+    #console-messages .console-message, .console-user-command {
+        border-bottom: 1px solid @base1 !important;
+    }
+
+    #console-messages .console-group-messages .section .header::before,
+    #console-messages .properties-tree li.parent::before {
+        content: url(chrome-devtools://devtools/Images/treeRightTriangleBlack.png) !important;
+    }
+
+    #console-messages .console-group-messages .section.expanded .header::before,
+    #console-messages .properties-tree li.parent.expanded::before {
+        content: url(chrome-devtools://devtools/Images/treeDownTriangleBlack.png) !important;
+    }
+}
+
+#console-prompt::before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjRGNTc2MTZDMTA2MTFFMDgwRUZGQ0JCMjgzMzU0MTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjRGNTc2MTdDMTA2MTFFMDgwRUZGQ0JCMjgzMzU0MTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MzM3N0Y2MUMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MzM3N0Y2MkMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Plf0eOsAAAB4SURBVHjaYvz//z8DMYAFxph+BqyhA8qtQFaUacKIUAgFLkBsDMSCUMXvYRJMaApdgfgsEKcB8W6oJqwK30MVr4YqOgPEodgUgoASkkkgjfewKSyHmqIEdYIJlEZR6ILk606oonsYwQMEe6A+PQtlowBGYgMcIMAAF2wcFPVNZx8AAAAASUVORK5CYII=) !important;
+    color: @base3 !important;
+}
+
+/**********************************************/
+/* View Source
+/**********************************************/
+
+.webkit-line-number {
+    background-color: @base02 !important;
+    color: @base01;
+    font-size: 11px !important;
+}
+
+.webkit-line-content {
+    color: @base0 !important;
+}
+
+/**********************************************/
+/* Script
+/**********************************************/
+
+.panel.scripts {
+    .navigator-tabbed-pane .navigator {
+        background: @base3;
+    }
+    .outline-disclosure > ol {
+        color: @base01 !important;
+    }
+    .outline-disclosure ol:focus li.selected,
+    .navigator :focus li.selected {
+        color: @base1 !important;
+    }
+}
+
+/**********************************************/
+/* Layout
+/**********************************************/
+#storage-views .script-view,
+#network-views .script-view,
+#elements-content .highlight,
+#script-resource-views .script-view {
+    color: @base0 !important;
+}
+
+#elements-content .parent::before {
+    content: url(chrome-devtools://devtools/Images/treeRightTriangleWhite.png) !important;
+    position: relative;
+    z-index: 999;
+}
+
+#elements-content .parent.expanded::before {
+    content: url(chrome-devtools://devtools/Images/treeDownTriangleWhite.png) !important;
+}
+
+li.hovered:not(.selected) .selection {
+    background-color: hsla(0, 0%, 100%, 0.2) !important;
+}
+
+.outline-disclosure li.selected .selection {
+    background-color: @base02 !important;
+}
+
+.outline-disclosure ol:focus li.selected .selection {
+    background-color: hsla(0, 0%, 100%, 0.1) !important;
+}
+
+.editing {
+    background-color: @base3 !important;
+    outline-color: @base1 !important;
+}
+
+/**********************************************/
+/* CSS
+/**********************************************/
+
+.webkit-css-comment {
+    color: @base1 !important;
+}
+
+.webkit-line-content,
+.webkit-css-selector {
+    color: @blue !important;
+}
+
+.webkit-css-property {
+    color: @base3 !important;
+}
+
+.webkit-css-keyword {
+    color: @cyan !important;
+}
+
+.webkit-css-number {
+    color: @red !important;
+}
+
+.webkit-css-at-rule {
+    color: @blue !important;
+}
+
+.webkit-css-string {
+    color: @yellow !important;
+}
+
+.webkit-css-url {
+    color: @base1 !important;
+}
+
+.webkit-css-color {
+    color: @magenta !important;
+}
+
+.webkit-css-string {
+    color: @base1 !important;
+}
+
+.webkit-css-keyword {
+    color: @orange !important;
+}
+
+/**********************************************/
+/* JavaScript
+/**********************************************/
+
+.webkit-javascript-ident {
+    color: @base3 !important;
+}
+
+.webkit-javascript-keyword {
+    color: @yellow !important;
+}
+
+.webkit-javascript-comment {
+    color: @base1 !important;
+}
+
+.webkit-javascript-string {
+    color: @yellow !important;
+}
+
+.webkit-javascript-number {
+    color: @magenta !important;
+}
+
+.webkit-javascript-regexp {
+    color: @red !important;
+}
+
+
+/**********************************************/
+/* Sidebar
+/**********************************************/
+
+.webkit-html-external-link,
+.webkit-html-resource-link {
+    color: @yellow !important;
+    text-decoration: none !important;
+}
+#elements-sidebar {
+    background: @base03 !important;
+}
+
+#elements-sidebar .styles-section.read-only,
+#elements-sidebar .styles-section.read-only .monospace {
+    background: @base03 !important;
+}
+
+#elements-sidebar .styles-section,
+#elements-sidebar .subtitle {
+    color: @magenta !important;
+}
+
+#elements-sidebar .styles-selector {
+    color: @violet !important;
+}
+
+#elements-sidebar .webkit-css-property {
+    color: @magenta !important;
+}
+
+#elements-sidebar .properties .value {
+    color: @cyan !important;
+}
+
+.webkit-html-external-link,
+.webkit-html-resource-link {
+    color: @green !important;
+    text-decoration: none !important;
+}
+
+.webkit-css-property,
+.webkit-css-at-rule,
+.console-formatted-string,
+.console-formatted-regexp {
+    color: @yellow !important;
+}
+
+.styles-section.read-only > * {
+    background-color: @base3 !important;
+}
+
+.styles-section .properties .child-editing,
+.styles-section .title > div > span,
+.styles-section .styles-selector > div > span,
+.section .properties .name, .event-properties .name {
+    color: @blue !important;
+}
+
+.webkit-css-property + .value {
+    color: @cyan !important;
+}
+
+.styles-section .properties .child-editing > span *,
+.console-formatted-object,
+.console-formatted-node {
+    color: @yellow !important;
+}
+
+.pane > .body .info,
+.placard .title {
+    color: @base1 !important;
+}
+
+.console-formatted-number {
+    color: #dc322f !important;
+}
+
+.styles-section .properties .enabled-button {
+    margin: 0 2px 0 !important;
+    left: -38px !important;
+    width: 14px !important;
+}
+
+.properties-tree li.parent::before,
+.properties-tree li.parent.expanded::before {
+    content: none !important;
+    float: none !important;
+}
+
+.styles-section.matched-styles .properties li.parent .expand-element {
+    content: url(chrome-devtools://devtools/Images/treeRightTriangleWhite.png) !important;
+}
+.styles-section.matched-styles .properties li.parent.expanded .expand-element {
+    content: url(chrome-devtools://devtools/Images/treeDownTriangleWhite.png) !important;
+}
+
+
+/**********************************************/
+/* Suggest-box
+/**********************************************/
+
+.suggest-box.generic-suggest {
+    background-color: @base3 !important;
+}
+
+.suggest-box-content-item {
+    color: @yellow !important;
+    font-weight: normal !important;
+}
+
+.suggest-box-content-item .prefix {
+    color: @red !important;
+}
+
+/**********************************************/
+/* Resource
+/**********************************************/
+
+.resource-view {
+    color: @base0;
+    &.image .infoList dt {
+        color: @blue !important;
+    }
+}
+
+}
+
+
+
+/**********************************************/
+/* Chrome DevTools + view-source:
+/**********************************************/
+
+body#-webkit-web-inspector,
+.webkit-line-gutter-backdrop,
+.webkit-line-gutter-backdrop + table {
+
+/**********************************************/
+/* Basic font and color settings
+/**********************************************/
+
+.webkit-line-number,
+.webkit-line-content {
+    background-color: @base03 !important;
+}
+
+.monospace,
+.source-code ,
+.webkit-line-number,
+.webkit-line-content,
+#elements-sidebar .child-editing {
+    font-family: Inconsolata, monospace !important;
+    font-size: 12px !important;
+    color: @base0 !important;
+}
+
+/**********************************************/
+/* HTML
+/**********************************************/
+.webkit-html-comment {
+    color: @base1 !important;
+}
+
+.webkit-html-tag {
+    color: @blue !important;
+}
+
+.webkit-html-attribute-name {
+    color: @cyan !important;
+}
+
+.webkit-html-attribute-value {
+    color: @yellow !important;
+}
+
+.webkit-html-css-node {
+    color: @base1 !important;
+}
+
+.webkit-html-js-node {
+    color: @base1 !important;
+}
+
+.webkit-html-external-link {
+    color: @magenta !important;
+}
+}
