@@ -12,4 +12,6 @@
 
 **Mac**: ~/Library/Application\ Support/Google/Chrome/Default/User\ StyleSheets/Custom.css
 
-##### Screenshots : http://imgur.com/a/3d64V
+You can use the normal Source editor or Codemirror (in about:flags), both are suported.
+
+##### Screenshots (without Codemirror) : http://imgur.com/a/3d64V
