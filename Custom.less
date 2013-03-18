@@ -311,6 +311,20 @@ li.hovered:not(.selected) .selection {
 /* JavaScript
 /**********************************************/
 
+@-webkit-keyframes fadeOut {
+    0%   { background-color: @base00 }
+    100% { background-color: @base03 }
+}
+
+.webkit-highlighted-line.webkit-line-content {
+    -webkit-animation: fadeOut 2s 0s !important;
+}
+
+.webkit-html-error-message {
+    background-color: #FFD1D1 !important;
+    color: @red !important;
+}
+
 .webkit-javascript-ident {
     color: @base3 !important;
 }
